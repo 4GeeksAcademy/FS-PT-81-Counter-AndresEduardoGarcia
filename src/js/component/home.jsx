@@ -1,26 +1,23 @@
 import React from "react";
 
 //include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import  Card  from "./Card";
+import { LuClock9 } from "react-icons/lu";
 
 //create your first component
-const Home = () => {
+const Home = ({ time }) => {
+	
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
-};
-
+		<>
+			<div className="wrapper d-flex p-2 justify-content-center align-items-center bg-dark gap-1">
+				<Card Digit={<LuClock9 />} />
+				<Card Digit={Math.floor(time / 100000) % 100000} />
+				<Card Digit={Math.floor(time / 10000) % 10000} />
+				<Card Digit={Math.floor(time / 1000) % 1000} />
+				<Card Digit={Math.floor(time / 100) % 100} />
+				<Card Digit={Math.floor(time % 10)} />
+			</div>
+		</>
+	)
+}
 export default Home;
